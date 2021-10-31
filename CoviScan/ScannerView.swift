@@ -91,7 +91,7 @@ struct ScannerView: View {
                     .cornerRadius(3)
                     .opacity(0.3)
                 
-                Text("The ML Model has proccessed your image and here are the results:")
+                Text("The Computer Vision Classifier has proccessed your image and here are the results:")
                     .multilineTextAlignment(.center)
                     .font(.subheadline)
                     .lineSpacing(3)
@@ -101,7 +101,7 @@ struct ScannerView: View {
                     VStack(alignment: .center, spacing: 8.0) {
                         Text("Covid Percentage")
                             .fontWeight(.bold)
-                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: store.result.covid_percentage*100, show: $showCard)
+                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: (store.result.covid_percentage-1)*100, show: $showCard)
                         
                     }
                     .padding(20)
@@ -115,7 +115,7 @@ struct ScannerView: View {
                     VStack(alignment: .center, spacing: 8.0) {
                         Text("Pneumonia Percentage")
                             .fontWeight(.bold)
-                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: store.result.pneumonia_percentage*100, show: $showCard)
+                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: (store.result.pneumonia_percentage-1)*100, show: $showCard)
                         
                     }
                     .padding(20)
@@ -129,7 +129,7 @@ struct ScannerView: View {
                     VStack(alignment: .center, spacing: 8.0) {
                         Text("Normal Percentage")
                             .fontWeight(.bold)
-                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: store.result.normal_percentage*100, show: $showCard)
+                        RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 55, height: 55, percent: (store.result.normal_percentage-1)*100, show: $showCard)
                         
                     }
                     .padding(20)

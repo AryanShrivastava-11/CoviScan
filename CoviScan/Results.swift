@@ -19,11 +19,11 @@ class API{
         let imageData: Data = image.jpegData(compressionQuality: 0.99) ?? Data()
         let imageStr: String = imageData.base64EncodedString()
 
-        guard let url: URL = URL(string: "https://api-ayush.herokuapp.com/api/ios/image") else {
+        guard let url: URL = URL(string: "https://covid19-detection-api.herokuapp.com/api/ios/image") else {
             print("invalid url")
             return
         }
-//        https://api-ayush.herokuapp.com/api/ios/image
+//        https://api-ayush.herokuapp.com/api/ios/image   https://covid19-detection-api.herokuapp.com/api/ios/image
     
         //create parameters
         let paraStr: String = "image=\(imageStr)"

@@ -17,7 +17,7 @@ struct MenuView: View {
                 MenuRow(title: "Sign out", icon: "person.crop.circle")
                 
                 VStack {
-                    Text("Designed and Created")
+                    Text("Designed and Developed")
                         .font(.caption2)
                     Text("by")
                         .font(.caption2)
