@@ -26,10 +26,11 @@ Apart from this, the Computer Vision Classifier is also developed for this proje
 </p>
 
 ## Video Link for iOS Demo:
-https://drive.google.com/file/d/1I0JKIE6a-HXESa8JMW_3hxzvCxUx7ruB/view?usp=sharing
+1) https://youtu.be/BOTp2OKDSng
+2) For Computer Vision Classifer Video: https://drive.google.com/drive/folders/1GNJ2s8IITd-mcoisUrhDMtzAILqMUSLq?usp=sharing
 
 ## Link for Computer Vision Classifier:
-https://drive.google.com/file/d/1I0JKIE6a-HXESa8JMW_3hxzvCxUx7ruB/view?usp=sharing
+https://github.com/ayush9304/Covid19-Detector
 
 
 ## Installation:
