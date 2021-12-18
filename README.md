@@ -25,12 +25,13 @@ Apart from this, the Computer Vision Classifier is also developed for this proje
   <img src="/image4.jpeg" width="200" />
 </p>
 
-## Video Link for iOS Demo:
+## Video Link:
 1) https://youtu.be/BOTp2OKDSng
 2) For Computer Vision Classifer Video: https://drive.google.com/drive/folders/1GNJ2s8IITd-mcoisUrhDMtzAILqMUSLq?usp=sharing
 
 ## Link for Computer Vision Classifier:
-https://github.com/ayush9304/Covid19-Detector
+The Computer Vision Classifier is developed by Ayush Kumar:
+https://github.com/ayush9304/covid19-detector-api
 
 
 ## Installation:
