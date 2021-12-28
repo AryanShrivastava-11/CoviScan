@@ -26,8 +26,7 @@ Apart from this, the Computer Vision Classifier is also developed for this proje
 </p>
 
 ## Video Link:
-1) https://youtu.be/BOTp2OKDSng
-2) For Computer Vision Classifer Video: https://drive.google.com/drive/folders/1GNJ2s8IITd-mcoisUrhDMtzAILqMUSLq?usp=sharing
+https://youtu.be/_P5XI-cDimE
 
 ## Link for Computer Vision Classifier:
 The Computer Vision Classifier is developed by Ayush Kumar:
