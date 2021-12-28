@@ -16,6 +16,7 @@ struct LoginView: View {
     @State var alertMessage = "Something went wrong."
     @State var isLoading = false
     @State var isSuccessful = false
+    @State var isLoginMode = false
     @EnvironmentObject var user: UserStore
     
     func login() {
@@ -24,23 +25,45 @@ struct LoginView: View {
         self.isLoading = true
         
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            self.isLoading = false
-            if error != nil{
-                alertMessage = error?.localizedDescription ?? ""
-                self.showAlert = true
-            }else{
-                self.isSuccessful = true
-                user.isLogged = true
-                UserDefaults.standard.set(true, forKey: "isLogged")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.email = ""
-                    self.password = ""
-                    self.isSuccessful = false
-                    user.showLogin = false
+        if isLoginMode {
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                self.isLoading = false
+                if error != nil{
+                    alertMessage = error?.localizedDescription ?? ""
+                    self.showAlert = true
+                }else{
+                    self.isSuccessful = true
+                    user.isLogged = true
+                    UserDefaults.standard.set(true, forKey: "isLogged")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.email = ""
+                        self.password = ""
+                        self.isSuccessful = false
+                        user.showLogin = false
+                    }
+                }
+            }
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                self.isLoading = false
+                if error != nil{
+                    alertMessage = error?.localizedDescription ?? ""
+                    self.showAlert = true
+                }else{
+                    self.isSuccessful = true
+                    user.isLogged = true
+                    UserDefaults.standard.set(true, forKey: "isLogged")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.email = ""
+                        self.password = ""
+                        self.isSuccessful = false
+                        user.showLogin = false
+                    }
                 }
             }
         }
+        
+        
     }
     
     func hideKeyboard() {
@@ -59,7 +82,18 @@ struct LoginView: View {
                 
                 CoverView()
                 
-                VStack {
+                VStack(spacing: 10) {
+                    Picker(selection: $isLoginMode) {
+                        Text("Create Account")
+                            .tag(false)
+                        Text("Login")
+                            .tag(true)
+                    } label: {
+                        Text("Picker for CreateAccout & Login")
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .offset(y: -5)
+                    
                     HStack {
                         Image(systemName: "person.crop.circle.fill")
                             .foregroundColor(Color(#colorLiteral(red: 0.6549019608, green: 0.7137254902, blue: 0.862745098, alpha: 1)))
@@ -102,26 +136,37 @@ struct LoginView: View {
                         }
                     }
                 }
-                .frame(height: 136)
+                .frame(height: 160)
                 .frame(maxWidth: .infinity)
                 .background(BlurView(style: .systemMaterial))
-                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                 .shadow(color: Color.black.opacity(0.15), radius: 20, x: 0, y: 20)
                 .padding(.horizontal)
                 .offset(y: isFocused ? -200 : 0)
-                .offset(y: 460)
+                .offset(y: 470)
                 .animation(.easeInOut)
                 
                 HStack {
                     Text("Forgot password?")
                         .font(.subheadline)
+                        .onTapGesture {
+                            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                                if let err = error{
+                                    alertMessage = err.localizedDescription
+                                    self.showAlert = true
+                                }else{
+                                    alertMessage = "Email sent succesfully"
+                                    self.showAlert = true
+                                }
+                            }
+                        }
                     
                     Spacer()
                     
                     Button(action: {
                         self.login()
                     }) {
-                        Text("Log in").foregroundColor(.black)
+                        Text(isLoginMode ? "Log in" : "Sign In").foregroundColor(.black)
                     }
                     .padding(12)
                     .padding(.horizontal, 30)
@@ -129,7 +174,7 @@ struct LoginView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .shadow(color: Color(#colorLiteral(red: 0, green: 0.7529411765, blue: 1, alpha: 1)).opacity(0.3), radius: 20, x: 0, y: 20)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Error"), message: Text(self.alertMessage), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Alert"), message: Text(self.alertMessage), dismissButton: .default(Text("OK")))
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
