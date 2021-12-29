@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+@available(iOS 15.0, *)
 struct LoginView: View {
     @State var email = ""
     @State var password = ""
@@ -205,6 +206,7 @@ struct LoginView: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()

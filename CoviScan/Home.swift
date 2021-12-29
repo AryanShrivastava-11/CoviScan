@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct Home: View {
     @State var showProfile: Bool = false
     @State var viewState = CGSize.zero
@@ -50,6 +51,7 @@ struct Home: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()

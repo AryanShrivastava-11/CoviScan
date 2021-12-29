@@ -6,7 +6,11 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 
+@available(iOS 15.0, *)
 struct ScannerView: View {
     @Binding var showProfile: Bool
     @State private var image = UIImage()
@@ -16,6 +20,54 @@ struct ScannerView: View {
     @State var bottomState = CGSize.zero
     @State var showFull = false
     
+    private func persistImageToStorage(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Storage.storage().reference(withPath: uid)
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        ref.putData(imageData, metadata: nil) { metaData, error in
+            if let err = error{
+                print("Error while upload image: \(err.localizedDescription)")
+                return
+            }
+            ref.downloadURL { url, error in
+                if let err = error{
+                    print("Error while getting img url: \(err.localizedDescription)")
+                }
+                //do something with image url
+                guard let url = url else { return }
+                storeScanData(imageURL: url)
+            }
+        }
+    }
+    
+    private func storeScanData(imageURL: URL){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let scanData: [String : Any] =
+                        ["covidPerc" : (store.result.covid_percentage-1)*100 ,
+                        "pneumoniaPerc" : (store.result.pneumonia_percentage-1)*100 ,
+                        "normalPerc" : (store.result.normal_percentage-1)*100 ,
+                        "prediction" : store.result.prediction ,
+                        "date" : Date.now.formatted(date: .numeric, time: .omitted),
+                         "image" : imageURL.absoluteString]
+        
+//        Firestore.firestore().collection("users").document(uid).setData(scanData) { error in
+//            if let err = error{
+//                print("Error while storing scan data into Firestore: \(err.localizedDescription)")
+//                return
+//            }
+//            print("success")
+//        }
+        Firestore.firestore().collection("\(uid)").addDocument(data: scanData) { error in
+            if let err = error{
+                print("Error while storing scan data into Firestore: \(err.localizedDescription)")
+                return
+            }
+            print("success")
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -55,8 +107,15 @@ struct ScannerView: View {
                     Button {
                         API().fetchResult(image: image) { resultData in
                             store.result = resultData
+                            if resultData.prediction != "null"{
+                                persistImageToStorage()
+                            }
+                            
                         }
-                        showCard.toggle()
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            showCard.toggle()
+                        }
                         
                         //                    Text("covid perc: \(store.result.covid_percentage)")
                         //                    Text("pneumonia perc: \(store.result.pneumonia_percentage)")
@@ -202,10 +261,13 @@ struct ScannerView: View {
     
 }
 
+
+@available(iOS 15.0, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ScannerView(showProfile: .constant(false))
             .environmentObject(UserStore())
+//            .preferredColorScheme(.dark)
     }
 }
 
@@ -265,8 +327,11 @@ struct ImageView: View {
         VStack {
             Image(uiImage: self.image)
                 .resizable()
-                .cornerRadius(50)
                 .frame(width: 200 , height: 200)
+                .background(
+                    Image(systemName: "lungs.fill")
+                        .font(.system(size: 70))
+                )
                 .background(Color.gray)
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))

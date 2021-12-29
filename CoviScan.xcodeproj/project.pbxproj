@@ -19,10 +19,11 @@
 		2840A20C272D7CCE007C60CD /* Lottie_Covi_Shield.json in Resources */ = {isa = PBXBuildFile; fileRef = 2840A20B272D7CCE007C60CD /* Lottie_Covi_Shield.json */; };
 		2840A20E272D7F6D007C60CD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840A20D272D7F6D007C60CD /* LoadingView.swift */; };
 		2840A210272D8131007C60CD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840A20F272D8131007C60CD /* SuccessView.swift */; };
-		2840A213272D877B007C60CD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2840A212272D877B007C60CD /* FirebaseAuth */; };
-		2840A215272D877B007C60CD /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 2840A214272D877B007C60CD /* FirebaseAuthCombine-Community */; };
 		2840A217272D8844007C60CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2840A216272D8844007C60CD /* GoogleService-Info.plist */; };
 		2840A219272D90E5007C60CD /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2840A218272D90E5007C60CD /* UserStore.swift */; };
+		28835F4E277B99E0005DF793 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F4D277B99E0005DF793 /* FirebaseAuth */; };
+		28835F50277B99E0005DF793 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F4F277B99E0005DF793 /* FirebaseFirestore */; };
+		28835F52277B99E0005DF793 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F51277B99E0005DF793 /* FirebaseStorage */; };
 		28BEF183272C4E5B0034F535 /* CoviScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEF182272C4E5B0034F535 /* CoviScanApp.swift */; };
 		28BEF185272C4E5B0034F535 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEF184272C4E5B0034F535 /* ScannerView.swift */; };
 		28BEF187272C4E5D0034F535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BEF186272C4E5D0034F535 /* Assets.xcassets */; };
@@ -64,8 +65,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2840A208272D7BAA007C60CD /* Lottie in Frameworks */,
-				2840A215272D877B007C60CD /* FirebaseAuthCombine-Community in Frameworks */,
-				2840A213272D877B007C60CD /* FirebaseAuth in Frameworks */,
+				28835F52277B99E0005DF793 /* FirebaseStorage in Frameworks */,
+				28835F4E277B99E0005DF793 /* FirebaseAuth in Frameworks */,
+				28835F50277B99E0005DF793 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +153,9 @@
 			name = CoviScan;
 			packageProductDependencies = (
 				2840A207272D7BAA007C60CD /* Lottie */,
-				2840A212272D877B007C60CD /* FirebaseAuth */,
-				2840A214272D877B007C60CD /* FirebaseAuthCombine-Community */,
+				28835F4D277B99E0005DF793 /* FirebaseAuth */,
+				28835F4F277B99E0005DF793 /* FirebaseFirestore */,
+				28835F51277B99E0005DF793 /* FirebaseStorage */,
 			);
 			productName = CoviScan;
 			productReference = 28BEF17F272C4E5B0034F535 /* CoviScan.app */;
@@ -184,7 +187,7 @@
 			mainGroup = 28BEF176272C4E5B0034F535;
 			packageReferences = (
 				2840A206272D7BAA007C60CD /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				2840A211272D877B007C60CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 28BEF180272C4E5B0034F535 /* Products */;
 			projectDirPath = "";
@@ -454,7 +457,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		2840A211272D877B007C60CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -470,15 +473,20 @@
 			package = 2840A206272D7BAA007C60CD /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		2840A212272D877B007C60CD /* FirebaseAuth */ = {
+		28835F4D277B99E0005DF793 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2840A211272D877B007C60CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		2840A214272D877B007C60CD /* FirebaseAuthCombine-Community */ = {
+		28835F4F277B99E0005DF793 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2840A211272D877B007C60CD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAuthCombine-Community";
+			package = 28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		28835F51277B99E0005DF793 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
