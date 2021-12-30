@@ -19,14 +19,15 @@ Apart from this, the Computer Vision Classifier is also developed for this proje
 ## Screenshots:
 
 <p float="left">
-  <img src="/image1.jpeg" width="200" />
-  <img src="/image2.jpeg" width="200" />
-  <img src="/image3.jpeg" width="200" />
-  <img src="/image4.jpeg" width="200" />
+  <img src="/image1.jpeg" width="160" />
+  <img src="/image2.jpeg" width="160" />
+  <img src="/image3.jpeg" width="160" />
+  <img src="/image4.jpeg" width="160" />
+  <img src="/image5.jpeg" width="160" />
 </p>
 
 ## Video Link:
-https://youtu.be/_P5XI-cDimE
+https://drive.google.com/file/d/155AsLOj9L4iH-DHyNLAdZ3E0Bz-Z88NO/view?usp=sharing
 
 ## Link for Computer Vision Classifier:
 The Computer Vision Classifier is developed by Ayush Kumar:
