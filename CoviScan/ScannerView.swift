@@ -13,6 +13,7 @@ import FirebaseStorage
 @available(iOS 15.0, *)
 struct ScannerView: View {
     @Binding var showProfile: Bool
+    @Binding var showScans: Bool
     @State private var image = UIImage()
     @State private var showSheet = false
     @ObservedObject var store = Store()
@@ -44,7 +45,7 @@ struct ScannerView: View {
     
     private func storeScanData(imageURL: URL){
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
+        print("Heres the user id:\(uid)")
         let scanData: [String : Any] =
                         ["covidPerc" : (store.result.covid_percentage-1)*100 ,
                         "pneumoniaPerc" : (store.result.pneumonia_percentage-1)*100 ,
@@ -74,7 +75,7 @@ struct ScannerView: View {
             Color("background2")
                 .edgesIgnoringSafeArea(.all)
             
-            TitleView(showProfile: $showProfile, show: $showCard)
+            TitleView(showProfile: $showProfile, show: $showCard, showScans: $showScans)
                 .background(
                     VStack {
                         LinearGradient(colors: [Color("background2"),Color("background1")], startPoint: .top, endPoint: .bottom)
@@ -265,7 +266,7 @@ struct ScannerView: View {
 @available(iOS 15.0, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ScannerView(showProfile: .constant(false))
+        ScannerView(showProfile: .constant(false), showScans: .constant(false))
             .environmentObject(UserStore())
 //            .preferredColorScheme(.dark)
     }
@@ -274,6 +275,7 @@ struct ContentView_Previews: PreviewProvider {
 struct TitleView: View {
     @Binding var showProfile: Bool
     @Binding var show: Bool
+    @Binding var showScans: Bool
     
     var body: some View {
         VStack {
@@ -285,16 +287,27 @@ struct TitleView: View {
                     
                     Spacer()
                     
-
+                    Button(action: { showScans.toggle() }) {
+                        //person.crop.circle.fill
+                        Image(systemName: "person.text.rectangle")
+                            .font(.system(size: 30, design: .rounded))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal,5)
+                            .shadow(color: .primary.opacity(0.3), radius: 1, x: 0, y: 1)
+                            .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 10)
+                        }
+                    .sheet(isPresented: $showScans) {
+                        ScanLog()
+                    }
                     
-                        Button(action: { showProfile.toggle() }) {
-                            //person.crop.circle.fill
-                            Image(systemName: "person.fill.checkmark")
-                                .font(.system(size: 30, design: .rounded))
-                                .foregroundColor(.primary)
-                                .padding(.horizontal,5)
-                                .shadow(color: .primary.opacity(0.3), radius: 1, x: 0, y: 1)
-                                .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 10)
+                    Button(action: { showProfile.toggle() }) {
+                        //person.crop.circle.fill
+                        Image(systemName: "person.fill.checkmark")
+                            .font(.system(size: 30, design: .rounded))
+                            .foregroundColor(.primary)
+                            .padding(.horizontal,5)
+                            .shadow(color: .primary.opacity(0.3), radius: 1, x: 0, y: 1)
+                            .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 10)
                         }
                      
                 }

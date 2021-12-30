@@ -10,6 +10,7 @@ import SwiftUI
 @available(iOS 15.0, *)
 struct Home: View {
     @State var showProfile: Bool = false
+    @State var showScans: Bool = false
     @State var viewState = CGSize.zero
     
     var body: some View {
@@ -17,7 +18,7 @@ struct Home: View {
             Color("background2")
                 .edgesIgnoringSafeArea(.all)
             
-            ScannerView(showProfile: $showProfile)
+            ScannerView(showProfile: $showProfile, showScans: $showScans)
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .offset(y: showProfile ? -screen.height/3 : 0)
                 .rotation3DEffect(Angle(degrees: showProfile ? Double(viewState.height/15) - 10 : 0), axis: (x: 10.0, y: 0.0, z: 0.0))

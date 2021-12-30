@@ -19,6 +19,7 @@ struct CoviScanApp: App {
     var body: some Scene {
         WindowGroup {
             LoginView().environmentObject(UserStore())
+//            ScanLog()
         }
     }
 }

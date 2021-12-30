@@ -24,6 +24,9 @@
 		28835F4E277B99E0005DF793 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F4D277B99E0005DF793 /* FirebaseAuth */; };
 		28835F50277B99E0005DF793 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F4F277B99E0005DF793 /* FirebaseFirestore */; };
 		28835F52277B99E0005DF793 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 28835F51277B99E0005DF793 /* FirebaseStorage */; };
+		28B1BEE5277CA2C4000C406B /* ScanLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1BEE4277CA2C4000C406B /* ScanLog.swift */; };
+		28B1BEE7277CAA59000C406B /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1BEE6277CAA58000C406B /* FirebaseManager.swift */; };
+		28B1BEEA277DE2D1000C406B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 28B1BEE9277DE2D1000C406B /* SDWebImageSwiftUI */; };
 		28BEF183272C4E5B0034F535 /* CoviScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEF182272C4E5B0034F535 /* CoviScanApp.swift */; };
 		28BEF185272C4E5B0034F535 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEF184272C4E5B0034F535 /* ScannerView.swift */; };
 		28BEF187272C4E5D0034F535 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BEF186272C4E5D0034F535 /* Assets.xcassets */; };
@@ -47,6 +50,8 @@
 		2840A20F272D8131007C60CD /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		2840A216272D8844007C60CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2840A218272D90E5007C60CD /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		28B1BEE4277CA2C4000C406B /* ScanLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLog.swift; sourceTree = "<group>"; };
+		28B1BEE6277CAA58000C406B /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		28BEF17F272C4E5B0034F535 /* CoviScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoviScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BEF182272C4E5B0034F535 /* CoviScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoviScanApp.swift; sourceTree = "<group>"; };
 		28BEF184272C4E5B0034F535 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B1BEEA277DE2D1000C406B /* SDWebImageSwiftUI in Frameworks */,
 				2840A208272D7BAA007C60CD /* Lottie in Frameworks */,
 				28835F52277B99E0005DF793 /* FirebaseStorage in Frameworks */,
 				28835F4E277B99E0005DF793 /* FirebaseAuth in Frameworks */,
@@ -107,6 +113,8 @@
 				28BEF190272C4E740034F535 /* CoviScan.entitlements */,
 				28BEF182272C4E5B0034F535 /* CoviScanApp.swift */,
 				28BEF184272C4E5B0034F535 /* ScannerView.swift */,
+				28B1BEE4277CA2C4000C406B /* ScanLog.swift */,
+				28B1BEE6277CAA58000C406B /* FirebaseManager.swift */,
 				2840A1FF272D6778007C60CD /* LoginView.swift */,
 				2821BAA7272D1BD400A0E9E4 /* Home.swift */,
 				2821BAA3272D1A7C00A0E9E4 /* MenuView.swift */,
@@ -156,6 +164,7 @@
 				28835F4D277B99E0005DF793 /* FirebaseAuth */,
 				28835F4F277B99E0005DF793 /* FirebaseFirestore */,
 				28835F51277B99E0005DF793 /* FirebaseStorage */,
+				28B1BEE9277DE2D1000C406B /* SDWebImageSwiftUI */,
 			);
 			productName = CoviScan;
 			productReference = 28BEF17F272C4E5B0034F535 /* CoviScan.app */;
@@ -188,6 +197,7 @@
 			packageReferences = (
 				2840A206272D7BAA007C60CD /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				28B1BEE8277DE2CD000C406B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 28BEF180272C4E5B0034F535 /* Products */;
 			projectDirPath = "";
@@ -219,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B1BEE5277CA2C4000C406B /* ScanLog.swift in Sources */,
 				28BEF192272C50BE0034F535 /* Store.swift in Sources */,
 				2821BAA6272D1AB800A0E9E4 /* BlurView.swift in Sources */,
 				2821BAA4272D1A7C00A0E9E4 /* MenuView.swift in Sources */,
@@ -230,6 +241,7 @@
 				2840A219272D90E5007C60CD /* UserStore.swift in Sources */,
 				28BEF194272C50DA0034F535 /* Results.swift in Sources */,
 				2821BAA8272D1BD400A0E9E4 /* Home.swift in Sources */,
+				28B1BEE7277CAA59000C406B /* FirebaseManager.swift in Sources */,
 				2840A200272D6778007C60CD /* LoginView.swift in Sources */,
 				2840A20A272D7C3A007C60CD /* LottieView.swift in Sources */,
 				28BEF183272C4E5B0034F535 /* CoviScanApp.swift in Sources */,
@@ -465,6 +477,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		28B1BEE8277DE2CD000C406B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -487,6 +507,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 28835F4C277B99E0005DF793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		28B1BEE9277DE2D1000C406B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28B1BEE8277DE2CD000C406B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
