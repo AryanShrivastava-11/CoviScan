@@ -281,7 +281,7 @@ struct TitleView: View {
         VStack {
             VStack {
                 HStack {
-                    Text("Scanner View")
+                    Text("Scanner")
                         .font(.system(size: 35, weight: .bold, design: .rounded))
                         .shadow(color: .primary.opacity(0.4), radius: 20, x: 0, y: 10)
                     
